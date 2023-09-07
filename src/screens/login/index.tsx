@@ -4,6 +4,8 @@ import bg from './../../assets/imgs/Logo.png';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 export interface LoginscreenProps {
@@ -11,7 +13,10 @@ export interface LoginscreenProps {
 
 export function Loginscreen (props: LoginscreenProps) {
 
-  
+
+    const cadastro = useNavigation();
+    cadastro.navigate('Cadastroscreen')
+
     const [refreshing, setRefreshing] = React.useState (false);
     const [ resultado, setResultado ] = useState<null|'logado'|'falhou'> (null);
   
