@@ -6,22 +6,8 @@ import { Loginscreen } from '../screens/login';
 import { Ofertasscreen } from '../screens/oferta'; 
 import {MaterialIcons} from '@expo/vector-icons'
 import { Cadastroscreen } from '../screens/cadastro';
-import { createStackNavigator } from '@react-navigation/stack'
 
-const Stack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
-
-export const NavegacaoSecundaria = () => (
-   <NavigationContainer>
-   <Stack.Navigator>
-   <Stack.Screen name="Login" component={Loginscreen} />
-   <Stack.Screen name="Cadastro" component={Cadastroscreen} />
-
-   </Stack.Navigator>
-   </NavigationContainer>
-)
-   
+const Tab = createBottomTabNavigator();   
 
 export function NavegacaoPrincipal() {
 

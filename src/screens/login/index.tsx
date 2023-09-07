@@ -14,8 +14,6 @@ export interface LoginscreenProps {
 export function Loginscreen (props: LoginscreenProps) {
 
 
-    const cadastro = useNavigation();
-    cadastro.navigate('Cadastroscreen')
 
     const [refreshing, setRefreshing] = React.useState (false);
     const [ resultado, setResultado ] = useState<null|'logado'|'falhou'> (null);
