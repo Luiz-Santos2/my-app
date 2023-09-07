@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, StyleSheet, ScrollView, RefreshControl, SafeAreaView, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, ImageBackground, StyleSheet, ScrollView, RefreshControl, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import bg from './../../assets/imgs/Logo.png';
 import { Formik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { useNavigation } from '@react-navigation/native';
-
-
 
 export interface LoginscreenProps {
+  navigation: any;
 }
 
 export function Loginscreen (props: LoginscreenProps) {
-
-
 
     const [refreshing, setRefreshing] = React.useState (false);
     const [ resultado, setResultado ] = useState<null|'logado'|'falhou'> (null);
@@ -66,7 +62,7 @@ return (
             { resultado == 'logado' && <Text style={styles.success}>Logado com sucesso.</Text>}
             { resultado == 'falhou' && <Text style={styles.fail}>Email ou senha incorretos. Tente novamente.</Text>}
 
-            <TouchableOpacity onPress={() => Alert.alert('Não consegui navegar para a tela de cadastro')}>
+            <TouchableOpacity onPress={() => props.navigation.navigate('Cadastro')}>
             <Text style={styles.cadastrar}>Não possui conta?
                       {'\n'}
                      Clique aqui para se cadastrar</Text>
