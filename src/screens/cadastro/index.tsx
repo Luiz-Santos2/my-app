@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, StyleSheet, ScrollView, RefreshControl, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
+import { 
+  View, 
+  Text, 
+  ImageBackground, 
+  StyleSheet, 
+  ScrollView, 
+  RefreshControl, 
+  SafeAreaView, 
+  TextInput, 
+  TouchableOpacity 
+} from 'react-native';
 import bg from './../../assets/imgs/Logo.png';
 import { Formik } from 'formik';
 import { useState } from 'react';
