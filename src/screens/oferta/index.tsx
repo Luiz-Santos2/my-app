@@ -118,5 +118,3 @@ price: {
     marginVertical: 10
 }
 });
-
-  

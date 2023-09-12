@@ -7,6 +7,7 @@ import { Ofertasscreen } from '../screens/oferta';
 import {MaterialIcons} from '@expo/vector-icons'
 import { Cadastroscreen } from '../screens/cadastro';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Configuracaoscreen } from '../screens/configuracao';
 
 
 const Stack = createStackNavigator();
@@ -14,6 +15,7 @@ export const NavegacaoConfiguracaoScreen = () => {
    return(
    <NavigationContainer independent = {true}>
       <Stack.Navigator>
+      <Stack.Screen name="Configuração" component={Configuracaoscreen} />
       <Stack.Screen name="Login" component={Loginscreen} />
       <Stack.Screen name="Cadastro" component={Cadastroscreen} />
       </Stack.Navigator>
