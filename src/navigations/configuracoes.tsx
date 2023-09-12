@@ -1,12 +1,13 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+import {MaterialIcons} from '@expo/vector-icons'
+
 import { Inicioscreen } from '../screens/inicio';
 import { Categoriascreen } from '../screens/categoria';
 import { Loginscreen } from '../screens/login';
 import { Ofertasscreen } from '../screens/oferta'; 
-import {MaterialIcons} from '@expo/vector-icons'
 import { Cadastroscreen } from '../screens/cadastro';
-import { createStackNavigator } from '@react-navigation/stack';
 import { Configuracaoscreen } from '../screens/configuracao';
 
 
