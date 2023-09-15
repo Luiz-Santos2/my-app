@@ -14,13 +14,11 @@ import { Configuracaoscreen } from '../screens/configuracao';
 const Stack = createStackNavigator();
 export const NavegacaoConfiguracaoScreen = () => {
    return (
-      <NavigationContainer independent={true}>
          <Stack.Navigator>
             <Stack.Screen name="Configuração" component={Configuracaoscreen} />
             <Stack.Screen name="Login" component={Loginscreen} />
             <Stack.Screen name="Cadastro" component={Cadastroscreen} />
          </Stack.Navigator>
-      </NavigationContainer>
    )
 }
 
@@ -28,7 +26,7 @@ const Tab = createBottomTabNavigator();
 export function NavegacaoPrincipal() {
 
    return (
-      <NavigationContainer independent={true}>
+      <NavigationContainer>
          <Tab.Navigator>
             <Tab.Screen name="Início" component={Inicioscreen} options={{
                tabBarLabel: "Início",
