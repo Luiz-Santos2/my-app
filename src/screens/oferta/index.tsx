@@ -28,21 +28,21 @@ export function Ofertasscreen(props: OfertascreensProps) {
       title: `Harry Potter`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/filme1.png')} />,
       price: 50.00,
-      category_id: 1
+      category_id: 0
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `The Walking Dead`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/serie1.png')} />,
       price: 50.00,
-      category_id: 2
+      category_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `Tom & Jerry`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/desenho1.png')} />,
       price: 50.00,
-      category_id: 3
+      category_id: 2
     },
     {
       id: Math.random().toString(12).substring(0),
@@ -56,7 +56,7 @@ export function Ofertasscreen(props: OfertascreensProps) {
       title: `Soniko`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/variado1.png')} />,
       price: 50.00,
-      category_id: 3
+      category_id: 4
     },
   ];
 
