@@ -26,42 +26,23 @@ export function Categoriascreen(props: CategoriascreenProps) {
 
   const CATEGORIA = [
     {
-      title: 'Filmes',
-      data: ['Bonecos', 'Quadros'],
+      data: ['Filmes','Séries','Desenhos','Animes','Variados'],
     },
-    {
-      title: 'Séries',
-      data: ['Bonecos', 'Quadros'],
-    },
-    {
-      title: 'Animes',
-      data: ['Bonecos', 'Quadros'],
-    },
-
-    {
-      title: 'Desenhos',
-      data: ['Bonecos', 'Quadros'],
-    },
-
-    {
-      title: 'Variados',
-      data: ['Bonecos', 'Quadros'],
-    },
-
   ];
 
 
   return (
     <ImageBackground source={bg} style={styles.background}>
       <SafeAreaView style={styles.container}>
+        
         <SectionList
-          renderSectionHeader={({ section: { title } }) => (
+         /* renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
-          )}
+          )}*/
           sections={CATEGORIA}
           keyExtractor={(item, index) => item + index}
           renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index }, text: { CATEGORIA } })}>
+            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index }})}>
               <View style={styles.item}>
                 <Text style={styles.title}>{item}</Text>
               </View>
@@ -76,35 +57,30 @@ export function Categoriascreen(props: CategoriascreenProps) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginHorizontal: 6,
-    padding: 4
+    flex: 1
   },
   item: {
     backgroundColor: 'lightgrey',
-    padding: 15,
-    marginVertical: 5,
+    padding: 25,
+    marginVertical: 25,
     marginHorizontal: 25,
-    borderRadius: 15
+    borderRadius: 20,
   },
-  header: {
+  /*header: {
     fontSize: 32,
-    padding: 5,
+    padding: 10,
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0.6)',
-    marginVertical: 5,
-    marginHorizontal: 10,
+    marginVertical: 30,
+    marginHorizontal: 12,
     textAlign: 'center',
-    borderRadius: 10
-  },
+    borderRadius: 10,
+  },*/
   title: {
     fontSize: 24,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   background: {
-    flex: 1,
-  },
-  list: {
     flex: 1,
   }
 }
