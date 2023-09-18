@@ -55,17 +55,17 @@ export function Categoriascreen(props: CategoriascreenProps) {
     <ImageBackground source={bg} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <SectionList
+          renderSectionHeader={({ section: { title } }) => (
+            <Text style={styles.header}>{title}</Text>
+          )}
           sections={CATEGORIA}
           keyExtractor={(item, index) => item + index}
           renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: {index} , text: {CATEGORIA}})}>
+            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index }, text: { CATEGORIA } })}>
               <View style={styles.item}>
                 <Text style={styles.title}>{item}</Text>
               </View>
             </TouchableOpacity>
-          )}
-          renderSectionHeader={({ section: { title } }) => (
-            <Text style={styles.header}>{title}</Text>
           )}
         />
       </SafeAreaView>
