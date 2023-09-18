@@ -6,36 +6,46 @@ import {
   SafeAreaView,
   SectionList,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import bg from './../../assets/imgs/Logo.png';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ProdutoParams } from '../../navigations/categoria';
+import { useNavigation } from '@react-navigation/native';
 
-export interface CategoriacreenProps {
+
+
+export interface CategoriascreenProps {
+
 }
 
-export function Categoriascreen(props: CategoriacreenProps) {
+export function Categoriascreen(props: CategoriascreenProps) {
 
-  const DATA = [
+  type navProp = StackNavigationProp<ProdutoParams, "Categoria">;
+  const navigation = useNavigation<navProp>();
+
+  const CATEGORIA = [
     {
       title: 'Filmes',
-      data: ['Bonecos', 'Quadros', 'Ver Todos'],
+      data: ['Bonecos', 'Quadros'],
     },
     {
       title: 'Séries',
-      data: ['Bonecos', 'Quadros', 'Ver Todos'],
+      data: ['Bonecos', 'Quadros'],
     },
     {
       title: 'Animes',
-      data: ['Bonecos', 'Quadros', 'Ver Todos'],
+      data: ['Bonecos', 'Quadros'],
     },
 
     {
       title: 'Desenhos',
-      data: ['Bonecos', 'Quadros', 'Ver Todos'],
+      data: ['Bonecos', 'Quadros'],
     },
 
     {
       title: 'Variados',
-      data: ['Bonecos', 'Quadros', 'Ver Todos'],
+      data: ['Bonecos', 'Quadros'],
     },
 
   ];
@@ -45,12 +55,14 @@ export function Categoriascreen(props: CategoriacreenProps) {
     <ImageBackground source={bg} style={styles.background}>
       <SafeAreaView style={styles.container}>
         <SectionList
-          sections={DATA}
+          sections={CATEGORIA}
           keyExtractor={(item, index) => item + index}
-          renderItem={({ item }) => (
-            <View style={styles.item}>
-              <Text style={styles.title}>{item}</Text>
-            </View>
+          renderItem={({ item, index }) => (
+            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: {index} , text: {CATEGORIA}})}>
+              <View style={styles.item}>
+                <Text style={styles.title}>{item}</Text>
+              </View>
+            </TouchableOpacity>
           )}
           renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
@@ -58,8 +70,8 @@ export function Categoriascreen(props: CategoriacreenProps) {
         />
       </SafeAreaView>
     </ImageBackground>
-  )
 
+  )
 }
 
 const styles = StyleSheet.create({
@@ -90,6 +102,9 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   background: {
+    flex: 1,
+  },
+  list: {
     flex: 1,
   }
 }

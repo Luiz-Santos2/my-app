@@ -1,42 +1,35 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons'
 
 import { Inicioscreen } from '../screens/inicio';
-import { Categoriascreen } from '../screens/categoria';
-import { Loginscreen } from '../screens/login';
 import { Ofertasscreen } from '../screens/oferta';
-import { Cadastroscreen } from '../screens/cadastro';
-import { Configuracaoscreen } from '../screens/configuracao';
+import { NavegacaoConfiguracaoScreen } from './configuracao';
+import { NavegacaoCategoriaScreen } from './categoria';
 
-
-const Stack = createStackNavigator();
-export const NavegacaoConfiguracaoScreen = () => {
-   return (
-         <Stack.Navigator>
-            <Stack.Screen name="Configuração" component={Configuracaoscreen} />
-            <Stack.Screen name="Login" component={Loginscreen} />
-            <Stack.Screen name="Cadastro" component={Cadastroscreen} />
-         </Stack.Navigator>
-   )
+export type NavegacaoParamsPrincipal = {
+   Início: any,
+   Ofertas: any,
+   Categorias: any,
+   Configurações: any
 }
 
-const Tab = createBottomTabNavigator();
+
+const Tab = createBottomTabNavigator<NavegacaoParamsPrincipal>();
 export function NavegacaoPrincipal() {
 
    return (
-      <NavigationContainer>
-         <Tab.Navigator>
+      <NavigationContainer >
+         <Tab.Navigator screenOptions={{ headerShown: false }}>
             <Tab.Screen name="Início" component={Inicioscreen} options={{
                tabBarLabel: "Início",
                tabBarIcon: () => <MaterialIcons name="home" size={20} />
             }} />
-            <Tab.Screen name="Favoritos" component={Ofertasscreen} options={{
+            <Tab.Screen name="Ofertas" component={Ofertasscreen} options={{
                tabBarLabel: "Ofertas",
                tabBarIcon: () => <MaterialIcons name="bolt" size={20} />
             }} />
-            <Tab.Screen name="Categorias" component={Categoriascreen} options={{
+            <Tab.Screen name="Categorias" component={NavegacaoCategoriaScreen} options={{
                tabBarLabel: "Categorias",
                tabBarIcon: () => <MaterialIcons name="menu" size={20} />
             }} />
