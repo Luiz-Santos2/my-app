@@ -26,7 +26,24 @@ export function Categoriascreen(props: CategoriascreenProps) {
 
   const CATEGORIA = [
     {
-      data: ['Filmes','Séries','Desenhos','Animes','Variados'],
+      title: 'Filmes',
+      data: ['Bonecos', 'Quadros'],
+    },
+    {
+      title: 'Séries',
+      data: ['Bonecos', 'Quadros'],
+    },
+    {
+      title: 'Animes',
+      data: ['Bonecos', 'Quadros'],
+    },
+    {
+      title: 'Desenhos',
+      data: ['Bonecos', 'Quadros'],
+    },
+    {
+      title: 'Variados',
+      data: ['Bonecos', 'Quadros'],
     },
   ];
 
@@ -34,15 +51,15 @@ export function Categoriascreen(props: CategoriascreenProps) {
   return (
     <ImageBackground source={bg} style={styles.background}>
       <SafeAreaView style={styles.container}>
-        
+
         <SectionList
-         /* renderSectionHeader={({ section: { title } }) => (
+          renderSectionHeader={({ section: { title } }) => (
             <Text style={styles.header}>{title}</Text>
-          )}*/
+          )}
           sections={CATEGORIA}
           keyExtractor={(item, index) => item + index}
           renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index }})}>
+            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index } })}>
               <View style={styles.item}>
                 <Text style={styles.title}>{item}</Text>
               </View>
@@ -62,20 +79,20 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: 'lightgrey',
     padding: 25,
-    marginVertical: 25,
+    marginVertical: 10,
     marginHorizontal: 25,
     borderRadius: 20,
   },
-  /*header: {
+  header: {
     fontSize: 32,
     padding: 10,
     color: 'white',
     backgroundColor: 'rgba(0,0,0,0.6)',
-    marginVertical: 30,
-    marginHorizontal: 12,
+    marginVertical: 10,
+    marginHorizontal: 15,
     textAlign: 'center',
     borderRadius: 10,
-  },*/
+  },
   title: {
     fontSize: 24,
     textAlign: 'center',
