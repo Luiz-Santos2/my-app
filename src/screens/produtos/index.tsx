@@ -17,8 +17,10 @@ export interface ProdutoscreensProps {
 }
 
 export function Produtoscreen(props: ProdutoscreensProps) {
-  const category_id = props.route.params?.category_id.index
-  console.log(category_id)
+  //@ts-ignore
+  const {category_id, type_id} = props.route.params
+  console.log('category_id', category_id)
+  console.log('type_id', type_id)
 
   type ItemData = {
     id: string;
@@ -33,35 +35,40 @@ export function Produtoscreen(props: ProdutoscreensProps) {
       title: `Harry Potter`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/filme1.png')} />,
       price: 50.00,
-      category_id: 0
+      category_id: 1,
+      type_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `The Walking Dead`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/serie1.png')} />,
       price: 50.00,
-      category_id: 1
+      category_id: 2,
+      type_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `Tom & Jerry`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/desenho1.png')} />,
       price: 50.00,
-      category_id: 2
+      category_id: 4,
+      type_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `Naruto`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/anime1.png')} />,
       price: 50.00,
-      category_id: 3
+      category_id: 3,
+      type_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
       title: `Soniko`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/variado1.png')} />,
       price: 50.00,
-      category_id: 4
+      category_id: 5,
+      type_id: 1
 
     },
   ];
@@ -83,7 +90,7 @@ export function Produtoscreen(props: ProdutoscreensProps) {
           initialNumToRender={4}
           renderItem={({ item }) => <Item product={item} />}
           keyExtractor={item => item.id}
-          data={getItems.filter(item => item.category_id == category_id)}
+          data={getItems.filter(item => item.category_id == category_id && item.type_id == type_id)}
         />
       </SafeAreaView>
     </ImageBackground>

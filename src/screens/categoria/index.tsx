@@ -27,23 +27,23 @@ export function Categoriascreen(props: CategoriascreenProps) {
   const CATEGORIA = [
     {
       title: 'Filmes',
-      data: ['Bonecos', 'Quadros'],
+      data: [{type: 'Bonecos', type_id: 1, category_id:1}, {type: 'Quadros', type_id: 2, category_id:1}],
     },
     {
       title: 'Séries',
-      data: ['Bonecos', 'Quadros'],
+      data: [{type: 'Bonecos', type_id: 1, category_id:2}, {type: 'Quadros', type_id: 2, category_id:2}],
     },
     {
       title: 'Animes',
-      data: ['Bonecos', 'Quadros'],
+      data: [{type: 'Bonecos', type_id: 1, category_id:3}, {type: 'Quadros', type_id: 2, category_id:3}],
     },
     {
       title: 'Desenhos',
-      data: ['Bonecos', 'Quadros'],
+      data: [{type: 'Bonecos', type_id: 1, category_id:4}, {type: 'Quadros', type_id: 2, category_id:4}],
     },
     {
       title: 'Variados',
-      data: ['Bonecos', 'Quadros'],
+      data: [{type: 'Bonecos', type_id: 1, category_id:5}, {type: 'Quadros', type_id: 2, category_id:5}],
     },
   ];
 
@@ -57,11 +57,11 @@ export function Categoriascreen(props: CategoriascreenProps) {
             <Text style={styles.header}>{title}</Text>
           )}
           sections={CATEGORIA}
-          keyExtractor={(item, index) => item + index}
+          keyExtractor={(item, index) => item.type + index}
           renderItem={({ item, index }) => (
-            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: { index } })}>
+            <TouchableOpacity onPress={() => navigation.navigate('Produtos', { category_id: item.category_id, type_id: item.type_id })}>
               <View style={styles.item}>
-                <Text style={styles.title}>{item}</Text>
+                <Text style={styles.title}>{item.type}</Text>
               </View>
             </TouchableOpacity>
           )}

@@ -3,7 +3,7 @@ import { Categoriascreen } from '../screens/categoria';
 import { Produtoscreen } from "../screens/produtos";
 
 export type ProdutoParams = {
-   Categoria: {category_id: any}, 
+   Categoria: {category_id: number, type_id: number}, 
    Produtos: any
 }
 
