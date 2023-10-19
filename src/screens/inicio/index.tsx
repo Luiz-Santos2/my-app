@@ -63,7 +63,6 @@ export function Inicioscreen(props: IniciocreensProps) {
 
   return (
     <ImageBackground source={bg} style={styles.container}>
-      <View>
         <FlatList
           ref={FlatlistRef}
           data={DATA}
@@ -105,6 +104,8 @@ export function Inicioscreen(props: IniciocreensProps) {
           horizontal
           keyExtractor={(item, index) => String(index)}
         />
+      <View>
+        
       </View>
     </ImageBackground>
   )
