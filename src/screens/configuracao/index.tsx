@@ -21,7 +21,7 @@ export function Configuracaoscreen(props: ConfiguracaoscreenProps) {
       <Text style={styles.logo}>Configurações</Text>
       <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
         <View style={styles.btn}>
-          <Text style={styles.text}>   Login   </Text>
+          <Text style={styles.text}>Login</Text>
         </View>
       </TouchableOpacity>
 
@@ -33,7 +33,7 @@ export function Configuracaoscreen(props: ConfiguracaoscreenProps) {
 
       <TouchableOpacity onPress={() => props.navigation.navigate('Cartão')}>
         <View style={styles.btn}>
-          <Text style={styles.text}>  Cartão  </Text>
+          <Text style={styles.text}>Cartão</Text>
         </View> 
       </TouchableOpacity>
       
@@ -55,14 +55,16 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     color: 'black',
-    marginHorizontal: 100,
+    marginHorizontal: 90,
     padding: 10,
     marginVertical: 3,
+    
   },
   btn: {
     marginVertical: 10,
     backgroundColor: 'rgba(211,211,211,1)',
     borderRadius: 10,
+    alignItems: 'center',
     
   },
   login: {
