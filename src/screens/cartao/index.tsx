@@ -15,23 +15,21 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import bg from './../../assets/imgs/Logo.png';
 
-
-
-export interface CadastroscreenProps {
+export interface CartaoscreenProps {
   navigation: any;
 }
 
-export function Cadastroscreen(props: CadastroscreenProps) {
+export function Cartaoscreen(props: CartaoscreenProps) {
 
   const [refreshing, setRefreshing] = React.useState(false);
-  const [resultado, setResultado] = useState<null | 'Cadastrado' | 'falhou'>(null);
+  const [resultado, setResultado] = useState<null | 'Cadastrado' | 'Falhou'>(null);
 
-  const handleLogin = async ({ nome, data, cpf, email, senha}: any) => {
+  const handleLogin = async ({ nome, numero, data, cod}: any) => {
     await new Promise(resolve => setTimeout(resolve, 1000))
-    if (nome.trim() != '' && data.trim() != '' && cpf.trim() != '' && email.trim() != '' && senha.trim() != '')
+    if (nome.trim() != '' && numero.trim() != '' && data.trim() != '' && cod.trim() != '')
       setResultado('Cadastrado')
     else
-    setResultado('falhou')
+      setResultado('Falhou')
   }
 
   const onRefresh = React.useCallback(() => {
@@ -51,41 +49,43 @@ export function Cadastroscreen(props: CadastroscreenProps) {
         <ImageBackground source={bg} style={styles.background}>
           <View>
             <Formik
-              initialValues={{ email: '', senha: '', nome: '', data: '', cpf: ''}}
+              initialValues={{ numero: '', data: '', nome: '', cod: ''}}
               validationSchema={Yup.object().shape({
-                email: Yup.string().required('Informe seu e-mail.').email('E-mail não é válido.'),
-                senha: Yup.string().required('Informe sua senha.').min(8, 'A senha precisa ter no mínimo 8 caracteres.'),
-                nome: Yup.string().required('Informe seu nome.').default('Digite seu nome'),
-                data: Yup.string().required('Informe sua data de nascimento.').min(10,'Formato (DD/MM/AAAA).'),
-                cpf: Yup.string().required('Informe seu CPF.').min(11, 'CPF tem que ter 11 digitos.')
+                nome: Yup.string().required('Informe o nome do titular.').default('Como está no cartão'),
+                numero: Yup.string().required('Informe o número do cartão.').min(16,'Nº de cartão inválido'),
+                data: Yup.string().required('Informe a data de vencimento.').min(5,'Formato (MM/AA)'),
+                cod: Yup.string().required('Digite o código do cartão.').min(3, 'Código inválido')
+
               })}
               onSubmit={handleLogin}>
               {({ errors, touched, handleBlur, handleChange, handleSubmit, isSubmitting }) => (
                 <View style={styles.box}>
-                  <Text style={styles.logo}>Cadastro usuário</Text>
-                  <TextInput placeholder='Seu nome completo...' onBlur={handleBlur('nome')} style={styles.textInput} onChangeText={handleChange('nome')} />
+                  <Text style={styles.logo}>Cadastro cartão</Text>
+
+                  <TextInput placeholder='Nome do titular' onBlur={handleBlur('nome')} style={styles.textInput} onChangeText={handleChange('nome')} />
                   {errors.nome && touched.nome && <Text style={styles.fail}>{errors.nome}</Text>}
 
-                  <TextInput placeholder='Sua data de Nascimento...' onBlur={handleBlur('data')} style={styles.textInput} onChangeText={handleChange('data')} />
+                  <TextInput placeholder='Nº do cartão' onBlur={handleBlur('numero')} style={styles.textInput} onChangeText={handleChange('numero')} />
+                  {errors.numero && touched.numero && <Text style={styles.fail}>{errors.numero}</Text>}
+
+                  <TextInput placeholder='Vencimento do cartão' onBlur={handleBlur('data')} style={styles.textInput} onChangeText={handleChange('data')} />
                   {errors.data && touched.data && <Text style={styles.fail}>{errors.data}</Text>}
 
-                  <TextInput placeholder='Seu CPF...' onBlur={handleBlur('cpf')} style={styles.textInput} onChangeText={handleChange('cpf')} />
-                  {errors.cpf && touched.cpf && <Text style={styles.fail}>{errors.cpf}</Text>}
+                  <TextInput placeholder='Código do cartão' onBlur={handleBlur('cod')} style={styles.textInput} onChangeText={handleChange('cod')} />
+                  {errors.cod && touched.cod && <Text style={styles.fail}>{errors.cod}</Text>}
 
-                  <TextInput placeholder='Seu email...' onBlur={handleBlur('email')} style={styles.textInput} onChangeText={handleChange('email')} />
-                  {errors.email && touched.email && <Text style={styles.fail}>{errors.email}</Text>}
+                  
 
-                  <TextInput placeholder='Sua senha...' onBlur={handleBlur('senha')} style={styles.textInput} onChangeText={handleChange('senha')} secureTextEntry />
-                  {errors.senha && touched.senha && <Text style={styles.fail}>{errors.senha}</Text>}
-
-                  {resultado == 'Cadastrado' && <Text style={styles.success}>Cadastrado com sucesso.</Text>}
-                  {resultado == 'falhou' && <Text style={styles.success}>Falha no cadastro.</Text>}
                   <TouchableOpacity onPress={() => handleSubmit()} disabled={isSubmitting}>
                     <View style={styles.btn}>
                       <Text style={styles.text}>Cadastrar</Text>
                     </View>
                   </TouchableOpacity>
-                  <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+
+                  {resultado == 'Cadastrado' && <Text style={styles.success}>Cadastrado realizado com sucesso.</Text>}
+                  {resultado == 'Falhou' && <Text style={styles.fail}>Falha no cadastrado.</Text>}
+
+                  <TouchableOpacity onPress={() => props.navigation.navigate('Configuração')}>
                     <Text style={styles.bs}>Voltar</Text>
                   </TouchableOpacity>
                 </View>
@@ -153,5 +153,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white'
   },
-
 });

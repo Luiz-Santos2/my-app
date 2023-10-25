@@ -24,7 +24,7 @@ export function Loginscreen(props: LoginscreenProps) {
   const [refreshing, setRefreshing] = React.useState(false);
   const [resultado, setResultado] = useState<null | 'logado' | 'falhou'>(null);
 
-  const handleLogin = async ({ email, senha }: any) => {
+  const handleLogin = async ({ email, senha}: any) => {
     await new Promise(resolve => setTimeout(resolve, 1000))
     if (email.trim() == 'teste@teste.com' && senha.trim() == '12345678')
       setResultado('logado')
