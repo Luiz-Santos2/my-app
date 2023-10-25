@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   box: {
     backgroundColor: 'rgba(0,0,0,0.55)',
     borderRadius: 15,
-    padding: 50
+    padding: 37
 
   },
   logo: {
