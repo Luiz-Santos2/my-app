@@ -57,7 +57,7 @@ export function Enderecoscreen(props: EnderecoscreenProps) {
                 bairro: Yup.string().required('Informe seu bairro').default('Digite seu bairro'),
                 numero: Yup.string().required('Digite o número').default('Digite seu número'),
                 complemento: Yup.string().required('Digite seu complemento').default('Digite seu complemento'),
-                estado: Yup.string().required('Digite seu estado Ex.: (AL) ').default('Digite seu estado'),
+                estado: Yup.string().required('Digite seu estado Ex.: (AL) ').min(2,'Estado não é válido'),
                 cidade: Yup.string().required('Digite sua cidade').default('Digite sua cidade'),
                 telefone: Yup.string().required('Digite seu telefone').min(11, 'Telefone não é válido')
 

@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   FlatList,
   ImageBackground,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 import bg from './../../assets/imgs/Logo.png';
 import { ProdutoParams } from '../../navigations/categoria';
@@ -14,6 +15,7 @@ import { RouteProp } from '@react-navigation/native';
 
 export interface ProdutoscreensProps {
   route: RouteProp<ProdutoParams, "Produtos">;
+  navigation: any;
 }
 
 export function Produtoscreen(props: ProdutoscreensProps) {
@@ -27,6 +29,9 @@ export function Produtoscreen(props: ProdutoscreensProps) {
     title: string;
     price: number;
     img_product: any;
+    category_id: number;
+    type_id: number;
+    item_id: number;
   };
 
   const getItems = [
@@ -36,15 +41,17 @@ export function Produtoscreen(props: ProdutoscreensProps) {
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/filme1.png')} />,
       price: 50.00,
       category_id: 1,
-      type_id: 1
+      type_id: 1,
+      item_id: 1
     },
     {
       id: Math.random().toString(12).substring(0),
-      title: `The Walking Dead`,
+      title: `Boneco Pop Funko Negan`,
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/serie1.png')} />,
       price: 50.00,
       category_id: 2,
-      type_id: 1
+      type_id: 1,
+      item_id: 2
     },
     {
       id: Math.random().toString(12).substring(0),
@@ -52,7 +59,8 @@ export function Produtoscreen(props: ProdutoscreensProps) {
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/desenho1.png')} />,
       price: 50.00,
       category_id: 4,
-      type_id: 1
+      type_id: 1,
+      item_id: 3
     },
     {
       id: Math.random().toString(12).substring(0),
@@ -60,7 +68,8 @@ export function Produtoscreen(props: ProdutoscreensProps) {
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/anime1.png')} />,
       price: 50.00,
       category_id: 3,
-      type_id: 1
+      type_id: 1,
+      item_id: 4
     },
     {
       id: Math.random().toString(12).substring(0),
@@ -68,7 +77,8 @@ export function Produtoscreen(props: ProdutoscreensProps) {
       img_product: <Image style={styles.img_product} source={require('./../../assets/imgs/variado1.png')} />,
       price: 50.00,
       category_id: 5,
-      type_id: 1
+      type_id: 1,
+      item_id: 5
 
     },
   ];
@@ -77,11 +87,13 @@ export function Produtoscreen(props: ProdutoscreensProps) {
   };
 
   const Item = ({ product }: ItemProps) => (
+    <TouchableOpacity onPress={() => props.navigation.navigate('Descrição', { item_id: product.item_id  })}>
     <View style={styles.item}>
       {product.img_product}
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.price}>R${product.price}</Text>
     </View>
+    </TouchableOpacity>
   );
   return (
     <ImageBackground source={bg} style={styles.background}>

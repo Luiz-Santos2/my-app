@@ -6,6 +6,8 @@ import { Inicioscreen } from '../screens/inicio';
 import { Ofertasscreen } from '../screens/oferta';
 import { NavegacaoConfiguracaoScreen } from './configuracao';
 import { NavegacaoCategoriaScreen } from './categoria';
+import { NavegacaoOfertaScreen } from './oferta';
+import { NavegacaoInicioScreen } from './inicio';
 
 export type NavegacaoParamsPrincipal = {
    Início: any,
@@ -21,11 +23,11 @@ export function NavegacaoPrincipal() {
    return (
       <NavigationContainer >
          <Tab.Navigator screenOptions={{ headerShown: false }}>
-            <Tab.Screen name="Início" component={Inicioscreen} options={{
+            <Tab.Screen name="Início" component={NavegacaoInicioScreen} options={{
                tabBarLabel: "Início",
                tabBarIcon: () => <MaterialIcons name="home" size={20} />
             }} />
-            <Tab.Screen name="Ofertas" component={Ofertasscreen} options={{
+            <Tab.Screen name="Ofertas" component={NavegacaoOfertaScreen} options={{
                tabBarLabel: "Ofertas",
                tabBarIcon: () => <MaterialIcons name="bolt" size={20} />
             }} />

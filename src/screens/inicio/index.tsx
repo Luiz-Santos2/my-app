@@ -5,7 +5,10 @@ import {
   ImageBackground,
   FlatList,
   Image,
-  Dimensions
+  Dimensions,
+  TouchableOpacity,
+  SafeAreaView,
+  Text
 } from 'react-native';
 import Animated, {
   Layout,
@@ -32,7 +35,7 @@ export function Inicioscreen(props: IniciocreensProps) {
   const [activeBanner, setActiveBanner] = useState<number>(0);
   const FlatlistRef = useRef<FlatList>(null);
 
-  const onViewableItemsChanged = ( viewableItems : any) => {
+  const onViewableItemsChanged = (viewableItems: any) => {
     if (viewableItems[0] !== undefined) {
       setActiveBanner(viewableItems[0]?.index);
     }
@@ -60,53 +63,50 @@ export function Inicioscreen(props: IniciocreensProps) {
     }, 3000);
     return () => clearTimeout(timeId);
   }, [activeBanner]);
-
+ 
   return (
     <ImageBackground source={bg} style={styles.container}>
-        <FlatList
-          ref={FlatlistRef}
-          data={DATA}
-          renderItem={({ item, index }) => (
-            <View style={styles.List}>
-              <Image source={item.image}
-                style={styles.imageList}
-                resizeMode='contain' />
-            </View>
-          )}
-          style={styles.indicator}
-          contentContainerStyle={{
-            marginLeft: -13,
-          }}
-          pagingEnabled
-          viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
-          horizontal
-          keyExtractor={(item, index) => String(index)}
-          showsHorizontalScrollIndicator={false}
-        />
-        <FlatList
-          data={DATA}
-          renderItem={({ item, index }) => (
-            <Animated.View
-              layout={Layout}
-              entering={FadeInLeft}
-              exiting={FadeOutRight}
-              style={{
-                width: activeBanner === index ? 12 : 8,
-                height: 8,
-                borderRadius: 4,
-                backgroundColor: activeBanner === index ? 'black' : 'gray',
-                marginHorizontal: 4,
-              }}
-            />
-          )}
-          style={styles.flatList}
-          scrollEnabled={false}
-          horizontal
-          keyExtractor={(item, index) => String(index)}
-        />
-      <View>
-        
-      </View>
+      <FlatList
+        ref={FlatlistRef}
+        data={DATA}
+        renderItem={({ item, index }) => (
+          <View style={styles.List}>
+            <Image source={item.image}
+              style={styles.imageList}
+              resizeMode='contain' />
+          </View>
+        )}
+        style={styles.indicator}
+        contentContainerStyle={{
+          marginLeft: -13,
+        }}
+        pagingEnabled
+        viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
+        horizontal
+        keyExtractor={(item, index) => String(index)}
+        showsHorizontalScrollIndicator={false}
+      />
+      <FlatList
+        data={DATA}
+        renderItem={({ item, index }) => (
+          <Animated.View
+            layout={Layout}
+            entering={FadeInLeft}
+            exiting={FadeOutRight}
+            style={{
+              width: activeBanner === index ? 12 : 8,
+              height: 8,
+              borderRadius: 4,
+              backgroundColor: activeBanner === index ? 'black' : 'gray',
+              marginHorizontal: 4,
+            }}
+          />
+        )}
+        style={styles.flatList}
+        scrollEnabled={false}
+        horizontal
+        keyExtractor={(item, index) => String(index)}
+      />
     </ImageBackground>
   )
 }
@@ -115,10 +115,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingTop: 60,
   },
   flatList: {
-    paddingTop: 20,
+    paddingTop: 40,
     alignSelf: 'center',
     bottom: 150,
   },
@@ -136,7 +135,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 40,
   },
   indicator: {
-    paddingTop: 20,
     height: 1,
-  }
+  },
 });
